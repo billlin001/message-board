@@ -1,0 +1,22 @@
+<groups xmlns="http://www.isdc.ro/wro">
+    <group name="bootstrap-jquery">
+        <css>webjar:bootstrap/3.2.0/less/bootstrap.less</css>
+        <css>file:${project.basedir}/src/main/wro/main.less</css>
+        <js>webjar:jquery/2.1.1/jquery.min.js</js>
+        <js>webjar:bootstrap/3.2.0/js/bootstrap.min.js</js>
+
+    </group>
+
+    <group name="datetimepicker">
+        <css>webjar:Eonasdan-bootstrap-datetimepicker/4.15.35/css/bootstrap-datetimepicker.min.css</css>
+        <js>webjar:momentjs/2.12.0/min/moment.min.js</js>
+        <js>webjar:Eonasdan-bootstrap-datetimepicker/4.15.35/js/bootstrap-datetimepicker.min.js</js>
+    </group>
+
+    <group name="datatables">
+        <css>webjar:datatables/1.10.11/css/dataTables.bootstrap.min.css</css>
+        <js>webjar:datatables/1.10.11/js/jquery.dataTables.min.js</js>
+        <js>webjar:datatables/1.10.11/js/dataTables.bootstrap.min.js</js>
+    </group>
+
+</groups>

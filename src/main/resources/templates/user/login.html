@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Getting Started: Java 101!!!</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap-jquery.css}" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" crossorigin="anonymous" />
+    <link th:href="@{/css/signin.css}" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <form class="form-signin" action="#" th:action="@{/login}" method="post">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <label for="email" class="sr-only">Email address</label>
+            <input type="text" id="email" name="email" class="form-control" placeholder="Email address" autofocus="autofocus" />
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="required" />
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me" /> Remember me
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+    </div>
+
+    <script th:src="@{/js/bootstrap-jquery.js}" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+</body>
+</html>

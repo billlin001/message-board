@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html layout:decorator="fragments/layout" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+
+</head>
+
+<body>
+    <div class="container" layout:fragment="content">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Team List</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Content</td>
+                        <td>Create Date</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="post : ${posts}">
+                        <td th:text="${post.id}">post id</td>
+                        <td th:text="${post.content}">post content</td>
+                        <td th:text="${post.dateCreated}">post create date</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

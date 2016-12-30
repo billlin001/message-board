@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Getting Started: Java 101!!!</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap-jquery.css}" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" th:href="@{/css/signin.css}"  />
+
+</head>
+
+<body>
+    <div class="container">
+
+        <form class="form-horizontal" role="form" action="#" th:action="@{/signup}" th:object="${userForm}" method="post">
+            <h2 class="form-inputs-heading">Sign Up</h2>
+
+            <div th:each="err : ${#fields.errors('global')}" th:text="${err}" class="alert alert-danger" />
+
+            <div class="form-group" th:class="${#fields.hasErrors('email')} ? 'form-group has-error' : 'form-group'">
+                <label class="control-label col-sm-2" for="email">Email address</label>
+                <div class="col-sm-10">
+                    <input type="text" id="email" class="form-control" th:field="*{email}" placeholder="Email address" required="required" autofocus="autofocus" />
+                    <div class="help-block" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="nickName">nickName</label>
+                <div class="col-sm-10">
+                    <input type="text" id="nickName" class="form-control" th:field="*{nickName}" placeholder="User nick name" required="required" />
+                    <div th:if="${#fields.hasErrors('nickName')}" th:errors="*{nickName}">Error</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="password">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" id="password" class="form-control" th:field="*{password}" placeholder="Password" required="required" />
+                    <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Error</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="passwordRepeated">Password Confirm</label>
+                <div class="col-sm-10">
+                    <input type="password" id="passwordRepeated" class="form-control" th:field="*{passwordRepeated}" placeholder="Password confirm" required="required" />
+                    <div th:if="${#fields.hasErrors('passwordRepeated')}" th:errors="*{passwordRepeated}">Error</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Hobby</label>
+                <div class="col-sm-10">
+                    <label class="checkbox-inline" th:each="hy : ${allHobby}">
+                        <input type="checkbox" th:value="${hy}" th:field="*{hobbies}"/>
+                        <span th:text="#{'userForm.hobby.' + ${hy}}"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Sex</label>
+                <div class="col-sm-10">
+                    <label th:each="sx : ${allSex}" class="radio-inline">
+                        <input type="radio" th:field="*{sex}" th:value="${sx}" />
+                        <span th:text="#{'userForm.sex.' + ${sx}}"></span>
+                    </label>
+                    <div th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}">Error</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="degree" class="control-label col-sm-2">Degree</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="degree" th:field="*{degree}">
+                        <option th:each="tp : ${allDegree}" th:value="${tp}" th:text="#{'userForm.degree.' + ${tp}}">1</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="startDate" class="control-label col-sm-2">Start Date</label>
+                <div class="col-sm-10">
+                    <input type="text" id="startDate" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="introduce" class="control-label col-sm-2">Introduce Yourself</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="5" id="introduce" th:field="*{introduce}"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="birthday" class="control-label col-sm-2">Birthday</label>
+                <div class="col-sm-2">
+                    <div class='input-group date' id='divBirthday'>
+                        <input type='text' class="form-control"  readonly="readonly" id="birthday" th:field="*{birthday}"/>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    <!--<div th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}">Error</div>-->
+                </div>
+            </div>
+
+            <hr/>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+
+    </div> <!-- /container -->
+
+    <script th:src="@{/js/bootstrap-jquery.js}" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script th:src="@{/js/datetimepicker.js}" ></script>
+    <script th:src="@{/js/user/signup.js}"></script>
+
+</body>
+</html>

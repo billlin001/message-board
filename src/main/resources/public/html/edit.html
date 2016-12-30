@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Getting Started: Java 101!!!</title>
+
+    <link rel="stylesheet" href="/css/bootstrap-jquery.css" />
+    <link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" />
+    <script type="application/javascript" src="/js/bootstrap-jquery.js" ></script>
+    <script type="application/javascript" src="/js/bootstrap-datetimepicker.js" ></script>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class='col-sm-6'>
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker1'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(function () {
+                    $('#datetimepicker1').datetimepicker();
+                });
+            </script>
+        </div>
+    </div>
+</body>
+</html>

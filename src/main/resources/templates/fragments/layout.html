@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <title>Getting Started: Java 101!!!</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap-jquery.css}" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" crossorigin="anonymous" />
+
+    <th:block layout:fragment="style"></th:block>
+
+</head>
+
+<body>
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body&hellip;</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div th:replace="fragments/navbar :: navbar">...</div>
+    <div class="container" layout:fragment="content">
+        <h1>Static content for prototyping purposes only</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Praesent scelerisque neque neque, ac elementum quam dignissim
+            interdum. Phasellus et placerat elit. Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Praesent scelerisque neque neque, ac
+            elementum quam dignissim interdum. Phasellus et placerat elit.</p>
+    </div>
+    <div th:replace="fragments/footer :: footer">...</div>
+
+    <script th:src="@{/js/bootstrap-jquery.js}" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <!--<script th:src="@{''}" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+    <script th:src="@{/js/layout/navbar.js}"></script>
+
+    <th:block layout:fragment="script"> </th:block>
+
+</body>
+</html>

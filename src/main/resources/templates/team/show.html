@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html layout:decorator="fragments/layout">
+<head>
+    <title>Getting Started: Java 101!!!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+
+<body>
+    <div layout:fragment="content">
+
+        <input type="hidden" id="teamId" th:value="${team.id}"></input>
+
+        <div class="col-md-12">
+
+            <!--menu-->
+            <div class="col-md-12">
+                <div class="group" th:if="${isUserInTeam}"><a th:href="@{'/teams/' + ${team.id} + '/posts/create'}" class="btn btn-warning pull-right">New Post</a></div>
+                <div class="group" th:if="${team.owner eq null ? false : team.owner.email eq #authentication.name}">
+                    <a th:href="@{'/teams/' + ${team.id} + '/update'}" class="btn btn-primary pull-right">Edit</a>
+                </div>
+                <div class="group" th:if="${!isUserInTeam and !(team.owner eq null ? false : team.owner.email eq #authentication.name)}">
+                    <a href="#" class="btn btn-danger pull-left" th:href="@{'/users/join/' + ${team.id}}">Join</a>
+                </div>
+                <div class="group" th:if="${isUserInTeam and !(team.owner eq null ? false : team.owner.email eq #authentication.name)}">
+                    <a href="#" class="btn btn-info pull-left" th:href="@{'/users/quit/' + ${team.id}}">Quit</a>
+                </div>
+            </div>
+
+            <!--content-->
+            <h2 th:text="${team.title}"></h2>
+            <p th:text="${team.description}"></p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>文章</th>
+                    <th colspan="2"></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                    <tr th:each="post : ${posts}">
+                        <td th:text="${post.content}"></td>
+                        <td>
+                            <div th:if="${post.owner eq null ? false : post.owner.email eq #authentication.name}">
+                                <a id="btnEdit" class="btn btn-sm btn-default"
+                                   th:href="@{'/teams/' + ${post.team.id} + '/posts/' + ${post.id} + '/update'}">Edit</a>
+                                <button name="btnDelete" id="btnDelete" class="btn btn-sm btn-default" data-toggle="modal"
+                                        data-target="#confirmModal" th:value="${post.id}">Delete
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Confirm</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure to delete this records?
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btnCancel" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button id="btnSure" type="button" class="btn btn-primary">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <th:block layout:fragment="script">
+        <script th:src="@{/js/team/show.js}"></script>
+    </th:block>
+
+</body>
+</html>

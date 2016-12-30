@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+</head>
+
+<body>
+<nav class="navbar navbar-default" role="navigation" th:fragment="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/" th:href="@{/}">Java 101</a>
+        </div>
+        
+        <ul class="nav navbar-nav navbar-right">
+            <li sec:authorize="!isAuthenticated()">
+                <a href="#" id="btnLogin"><span class="glyphicon glyphicon-log-in"></span>Login</a>
+            </li>
+            <li sec:authorize="!isAuthenticated()">
+                <a href="#" id="btnSignUp"><span class="glyphicon glyphicon-user"></span>Sign up</a>
+            </li>
+            <li></li>
+            <li class="dropdown" sec:authorize="isAuthenticated()">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Hi,
+                    <span sec:authentication="principal.username">UserName</span>
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#" id="btnLogout">
+                            <span class="glyphicon glyphicon-log-out"></span>
+                            Logout
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="btnTeam" th:href="@{'/user/teams'}">
+                            Team
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="btnLogout" th:href="@{'/user/posts'}">
+                            Post
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="btnEditUser" th:href="@{'/user/edit'}">
+                            Edit Profile
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            
+        </ul>
+    </div><!-- /.container-fluid -->
+</nav>
+</body>
+</html>
